@@ -1,5 +1,107 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PowerBuilder MCP — AI copilots for legacy PowerBuilder teams</title><meta name="description" content="PowerBuilder MCP gives GitHub Copilot structured access to PowerBuilder workspaces, libraries, objects, DataWindows, and dependencies."><link rel="stylesheet" href="assets/style.css"></head><body>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PowerBuilder MCP — AI copilots for legacy PowerBuilder teams</title><meta name="description" content="PowerBuilder MCP gives GitHub Copilot structured access to PowerBuilder workspaces, libraries, objects, DataWindows, and dependencies — so legacy teams can analyze, refactor, and modernize faster.">
+<meta name="keywords" content="PowerBuilder, MCP, Model Context Protocol, GitHub Copilot, PowerBuilder modernization, PBL, DataWindow, legacy modernization, ORCA, AI code assistant, PowerBuilder 12.5, enterprise legacy code">
+<meta name="author" content="PowerBuilder MCP">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://powerbuildermcp.com/">
+<link rel="stylesheet" href="assets/style.css">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://powerbuildermcp.com/">
+<meta property="og:title" content="PowerBuilder MCP — AI copilots for legacy PowerBuilder teams">
+<meta property="og:description" content="Give GitHub Copilot structured access to PowerBuilder workspaces, libraries, objects, and DataWindows. Analyze, refactor, and modernize legacy code faster.">
+<meta property="og:site_name" content="PowerBuilder MCP">
+<meta property="og:image" content="https://powerbuildermcp.com/assets/og-image.png">
+<meta property="og:locale" content="en_US">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://powerbuildermcp.com/">
+<meta name="twitter:title" content="PowerBuilder MCP — AI copilots for legacy PowerBuilder teams">
+<meta name="twitter:description" content="Give GitHub Copilot structured access to PowerBuilder workspaces, libraries, objects, and DataWindows.">
+<meta name="twitter:image" content="https://powerbuildermcp.com/assets/og-image.png">
+<!-- Schema: SoftwareApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PowerBuilder MCP",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Windows",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "An MCP server that gives GitHub Copilot structured access to PowerBuilder workspaces, libraries, objects, DataWindows, and dependencies.",
+  "url": "https://powerbuildermcp.com/",
+  "featureList": [
+    "Workspace and library discovery",
+    "Object source export and import",
+    "DataWindow SQL and column analysis",
+    "Dependency mapping",
+    "Cross-library search",
+    "Nested DataWindow detection"
+  ]
+}
+</script>
+<!-- Schema: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does PowerBuilder MCP work with GitHub Copilot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PowerBuilder MCP is an MCP (Model Context Protocol) server that integrates directly with GitHub Copilot in VS Code. Once configured, Copilot can call structured tools to inspect libraries, export objects, parse DataWindows, and analyze dependencies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it inspect DataWindows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PowerBuilder MCP exports DataWindow source code and parses it to extract SQL queries, tables, columns, retrieval arguments, and nested DataWindow references."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is source code kept local?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PowerBuilder MCP runs as a local stdio server. Your PowerBuilder source code stays on your machine and is never sent to any external server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it support enterprise environments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PowerBuilder MCP supports on-premise deployment, team licensing, and audit-friendly workflows. It is designed for banks, insurance companies, and large organizations maintaining PowerBuilder applications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it suitable for migration planning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PowerBuilder MCP helps identify heavily reused business rules, tightly coupled UI logic, complex DataWindows, and service extraction candidates — producing a strong foundation for phased modernization roadmaps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What PowerBuilder versions are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PowerBuilder MCP currently supports PowerBuilder 12.5 through the native PowerBuilder runtime interface. Compatibility with additional versions is on the roadmap."
+      }
+    }
+  ]
+}
+</script>
+</head><body>
 <header class="nav"><div class="container"><a class="brand" href="index.html"><span class="brand-badge">PB</span><span>PowerBuilder MCP</span></a><nav class="nav-links"><a href="#features">Features</a><a href="#architecture">Architecture</a><a href="docs.html">Docs</a><a href="prompts.html">Prompt Library</a><a class="btn" href="docs.html">Get started</a></nav></div></header>
 <main>
 <section class="hero"><div class="container hero-grid"><div><div class="eyebrow"><span class="dot"></span>MCP protocol · GitHub Copilot · PowerBuilder 12.5</div><h1>Bring <span class="hl-o">PowerBuilder</span><br>into the <span class="hl-b">Copilot workflow</span></h1><p class="lead">PowerBuilder MCP gives AI assistants structured access to libraries, objects, exported source, DataWindows, and dependencies — so legacy teams can analyze, document, refactor, and modernize faster without turning their codebase into guesswork.</p><div class="hero-actions"><a class="btn" href="docs.html">Open docs</a><a class="btn-ghost" href="prompts.html">See example prompts</a></div><div class="micro">Best positioning: <strong>product-first</strong> homepage, with separate docs and prompt examples. Not a pure single-page brochure.</div></div>
@@ -23,5 +125,6 @@ end event
 <div class="container"><div class="bar"><span>Built for legacy modernization</span><span>Private local MCP server</span><span>Works with real PBL workflows</span><span>Enterprise-friendly rollout</span></div></div>
 <section class="section" id="features"><div class="container"><div class="kicker">Capabilities</div><h2>Use real PowerBuilder operations,<br>not fake AI intuition</h2><p class="top">I checked your public repo and aligned the messaging to actual MCP tools already present in the product: <code>list_libraries</code>, <code>list_objects</code>, <code>export_object</code>, <code>import_object</code>, <code>search_objects</code>, <code>parse_datawindow</code>, <code>analyze_dependencies</code>, and <code>find_nested_datawindows</code>.</p><div class="grid3"><article class="card"><div class="num">01</div><h3>Workspace discovery</h3><p>Enumerate libraries and objects so Copilot understands the actual PowerBuilder surface area before suggesting anything.</p></article><article class="card"><div class="num">02</div><h3>Source export</h3><p>Export windows, DataWindows, user objects, structures, and functions into analyzable source for documentation and refactoring.</p></article><article class="card"><div class="num">03</div><h3>DataWindow intelligence</h3><p>Parse exported DataWindows to extract SQL, tables, columns, nested DataWindows, and retrieval arguments.</p></article><article class="card"><div class="num">04</div><h3>Dependency mapping</h3><p>Trace calls to functions, user objects, and shared utilities before touching high-risk legacy flows.</p></article><article class="card"><div class="num">05</div><h3>Search at product scale</h3><p>Search libraries and object names across a large codebase to find dead zones, duplicates, and modernization candidates.</p></article><article class="card"><div class="num">06</div><h3>Controlled write-back</h3><p>Support import workflows for teams that want AI-assisted edits in a governed, reviewable process.</p></article></div></div></section>
 <section class="section" id="architecture"><div class="container"><div class="kicker">Architecture</div><h2>A native bridge between<br>PowerBuilder and AI assistants</h2><p class="top">You were right to be careful about exposing implementation details. Homepage copy should say <strong>native PowerBuilder runtime interface</strong> or <strong>ORCA API</strong> — not the raw DLL name. The low-level implementation detail belongs in technical docs, not in topline marketing.</p><div class="diagram"><div class="node"><div class="node-ico pb">PB</div><strong>PowerBuilder workspace</strong><span>.pbw · .pbl</span></div><div><div class="connlbl">native runtime interface</div><div class="conn"></div></div><div class="node"><div class="node-ico mcp">MCP</div><strong>PowerBuilder MCP</strong><span>local stdio server</span></div><div><div class="connlbl">JSON-RPC tools</div><div class="conn"></div></div><div class="node"><div class="node-ico cp">AI</div><strong>GitHub Copilot</strong><span>VS Code / MCP client</span></div></div></div></section>
+<section class="section" id="faq"><div class="container"><div class="kicker">FAQ</div><h2>Frequently asked questions</h2><p class="top">Everything teams ask before adopting PowerBuilder MCP.</p><div class="prompts"><article class="prompt-card"><h3>Does it work with GitHub Copilot?</h3><p>Yes. PowerBuilder MCP is an MCP server that integrates directly with GitHub Copilot in VS Code. Copilot calls structured tools to inspect libraries, export objects, parse DataWindows, and analyze dependencies.</p></article><article class="prompt-card"><h3>Can it inspect DataWindows?</h3><p>Yes. PowerBuilder MCP exports DataWindow source and parses it to extract SQL queries, tables, columns, retrieval arguments, and nested DataWindow references.</p></article><article class="prompt-card"><h3>Is source code kept local?</h3><p>Yes. PowerBuilder MCP runs as a local stdio server. Your source code stays on your machine and is never sent to any external server.</p></article><article class="prompt-card"><h3>Does it support enterprise environments?</h3><p>Yes. It supports on-premise deployment, team licensing, and audit-friendly workflows — designed for banks, insurance companies, and large organizations.</p></article><article class="prompt-card"><h3>Is it suitable for migration planning?</h3><p>Absolutely. It helps identify heavily reused business rules, tightly coupled UI logic, complex DataWindows, and service extraction candidates — a strong foundation for phased modernization.</p></article><article class="prompt-card"><h3>What PowerBuilder versions are supported?</h3><p>PowerBuilder 12.5 is currently supported through the native PowerBuilder runtime interface. Additional versions are on the roadmap.</p></article></div></div></section>
 <section class="section"><div class="container two"><div class="panel"><div class="kicker">Positioning</div><h3>My recommendation: product site first, resource site second</h3><p>If you may sell this, don’t lead with a community-resource identity. Lead with a serious product posture, then attach educational content underneath it.</p><ul class="list"><li><span class="check">✓</span><span><strong>Homepage:</strong> clear problem, realistic UI, enterprise trust, call to docs/demo/contact.</span></li><li><span class="check">✓</span><span><strong>Docs:</strong> install, configure, verify, troubleshooting, compatibility.</span></li><li><span class="check">✓</span><span><strong>Prompt library:</strong> example prompts by use-case — analysis, DataWindow audit, dependency tracing, migration prep.</span></li><li><span class="check">✓</span><span><strong>Later:</strong> case studies, blog, pricing, licensing, download portal.</span></li></ul></div><div class="panel"><div class="kicker">IA decision</div><h3>Should it stay single page?</h3><p><strong>Not as the final form.</strong> Single page is fine for a temporary teaser, but for a real sellable product you want a small multi-page structure.</p><div class="callout"><strong>Best structure right now</strong><br>• <code>/</code> landing page<br>• <code>/docs</code> setup + operational docs<br>• <code>/prompts</code> high-value example prompts<br><br>This keeps the homepage polished and executive-friendly while letting developers self-serve deeper details.</div><div style="margin-top:18px"><a class="btn" href="docs.html">Open docs</a> <a class="btn-ghost" href="prompts.html">Open prompts</a></div></div></div></section>
 </main><footer class="footer"><div class="container"><p>PowerBuilder MCP — AI workflows for PowerBuilder teams.</p><p><a href="docs.html">Docs</a> · <a href="prompts.html">Prompt library</a></p></div></footer></body></html>

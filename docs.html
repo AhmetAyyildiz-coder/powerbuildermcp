@@ -1,5 +1,36 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PowerBuilder MCP Docs</title><meta name="description" content="Installation, configuration, verification, and troubleshooting for PowerBuilder MCP."><link rel="stylesheet" href="assets/style.css"></head><body>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PowerBuilder MCP Docs</title><meta name="description" content="Complete installation and configuration guide for PowerBuilder MCP. Set up the MCP server, configure GitHub Copilot, verify the connection, and troubleshoot issues.">
+<meta name="keywords" content="PowerBuilder MCP install, MCP server setup, GitHub Copilot configuration, PowerBuilder ORCA, PBL workspace setup, MCP stdio server">
+<meta name="author" content="PowerBuilder MCP">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://powerbuildermcp.com/docs.html">
+<link rel="stylesheet" href="assets/style.css">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://powerbuildermcp.com/docs.html">
+<meta property="og:title" content="PowerBuilder MCP — Documentation">
+<meta property="og:description" content="Install, configure, and verify PowerBuilder MCP. Full setup guide with troubleshooting.">
+<meta property="og:site_name" content="PowerBuilder MCP">
+<meta property="og:image" content="https://powerbuildermcp.com/assets/og-image.png">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://powerbuildermcp.com/docs.html">
+<meta name="twitter:title" content="PowerBuilder MCP — Documentation">
+<meta name="twitter:description" content="Install, configure, and verify PowerBuilder MCP. Full setup guide with troubleshooting.">
+<!-- Schema: TechArticle -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "PowerBuilder MCP — Installation and Configuration Guide",
+  "description": "Complete installation and configuration guide for PowerBuilder MCP.",
+  "author": { "@type": "Organization", "name": "PowerBuilder MCP" },
+  "publisher": { "@type": "Organization", "name": "PowerBuilder MCP" },
+  "url": "https://powerbuildermcp.com/docs.html",
+  "mainEntityOfPage": "https://powerbuildermcp.com/docs.html"
+}
+</script>
+</head><body>
 <header class="nav"><div class="container"><a class="brand" href="index.html"><span class="brand-badge">PB</span><span>PowerBuilder MCP</span></a><nav class="nav-links"><a href="index.html">Home</a><a href="prompts.html">Prompt Library</a><a class="btn" href="#install">Quick start</a></nav></div></header>
 <main class="section"><div class="container"><div class="kicker">Documentation</div><h1 style="font-size:clamp(2.2rem,4vw,3.8rem);margin-bottom:14px">Install, configure, and verify<br>PowerBuilder MCP</h1><p class="top">This page is intentionally more technical than the homepage. Here it’s okay to be explicit about environment variables, compatibility, and operational steps.</p><div class="docs-shell"><aside class="side"><h4>Quick start</h4><a class="active" href="#overview">Overview</a><a href="#install">Install</a><a href="#configure">Configure</a><a href="#verify">Verify</a><a href="#tools">Tool reference</a><a href="#troubleshooting">Troubleshooting</a></aside><div>
 <section class="doc" id="overview"><span class="tag">Overview</span><h3>Recommended message split</h3><p>Marketing pages should talk about the <strong>native PowerBuilder runtime interface</strong> or <strong>ORCA API</strong>. Technical docs can document the exact runtime requirements and environment variables because developers need that level of precision.</p><div class="callout">From your public repo I confirmed the operational flow is driven by environment variables like <code>PB_WORKSPACE_DIR</code>, <code>PB_ORCA_PATH</code>, <code>PB_MCP_LICENSE</code>, <code>PB_MCP_LICENSE_API_URL</code>, and <code>PB_MCP_MACHINE_CODE</code>, with a PowerShell entrypoint in <code>run_mcp.ps1</code>.</div></section>
