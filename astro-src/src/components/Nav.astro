@@ -1,10 +1,12 @@
 ---
+import LangToggle from './LangToggle.astro';
+
 const links = [
-  { href: '/#features', label: 'Features' },
-  { href: '/#architecture', label: 'Architecture' },
-  { href: '/docs', label: 'Docs' },
-  { href: '/prompts', label: 'Prompts' },
-  { href: '/#faq', label: 'FAQ' },
+  { href: '/#features', key: 'Özellikler', en: 'Features' },
+  { href: '/#architecture', key: 'Mimari', en: 'Architecture' },
+  { href: '/docs', key: 'Dokümanlar', en: 'Docs' },
+  { href: '/prompts', key: 'Promptlar', en: 'Prompts' },
+  { href: '/#faq', key: 'SSS', en: 'FAQ' },
 ];
 ---
 
@@ -14,12 +16,13 @@ const links = [
       <span class="brand-badge">PB</span>
       <span>PowerBuilder MCP</span>
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü">☰</button>
     <nav class="nav-links" id="navLinks">
       {links.map((l) => (
-        <a href={l.href}>{l.label}</a>
+        <a href={l.href} data-en={l.en}>{l.key}</a>
       ))}
-      <a class="btn" href="/docs">Get started</a>
+      <a class="btn" href="/docs" data-en="Get started">Başla</a>
+      <LangToggle />
     </nav>
   </div>
 </header>

@@ -1,33 +1,39 @@
 ---
 const prompts = [
   {
-    title: 'Workspace discovery',
-    desc: 'Get a full inventory of your PowerBuilder application structure.',
+    trTitle: 'Çalışma alanı keşfi', enTitle: 'Workspace discovery',
+    trDesc: 'PowerBuilder uygulama yapınızın tam envanterini alın.',
+    enDesc: 'Get a full inventory of your PowerBuilder application structure.',
     code: `List all libraries in this workspace, then show me a summary of object types in each library (windows, DataWindows, user objects, functions).`,
   },
   {
-    title: 'DataWindow audit',
-    desc: 'Find DataWindows with complex or risky SQL patterns.',
+    trTitle: 'DataWindow denetimi', enTitle: 'DataWindow audit',
+    trDesc: 'Karmaşık veya riskli SQL pattern\'lerine sahip DataWindow\'ları bulun.',
+    enDesc: 'Find DataWindows with complex or risky SQL patterns.',
     code: `Search for all DataWindows that use "customer_id" as a retrieval argument. For each one, export the source and extract the SQL query, tables, and columns. Flag any that have nested DataWindows.`,
   },
   {
-    title: 'Dependency tracing',
-    desc: 'Map what depends on what before refactoring.',
+    trTitle: 'Bağımlılık izleme', enTitle: 'Dependency tracing',
+    trDesc: 'Refactor öncesi neyin neye bağlı olduğunu haritalayın.',
+    enDesc: 'Map what depends on what before refactoring.',
     code: `Export w_order_entry and analyze its dependencies. List every function, user object, and external reference it calls. Then check if any of those are also used by other windows.`,
   },
   {
-    title: 'Migration planning',
-    desc: 'Prioritize what to modernize first.',
+    trTitle: 'Migrasyon planlama', enTitle: 'Migration planning',
+    trDesc: 'Önce neyi modernize edeceğinize öncelik verin.',
+    enDesc: 'Prioritize what to modernize first.',
     code: `Find all global functions and rank them by how many objects reference them. Identify the top 5 most coupled components that would be hardest to extract into a service layer.`,
   },
   {
-    title: 'Safe edit planning',
-    desc: 'Plan a controlled change with full context.',
+    trTitle: 'Güvenli düzenleme planlama', enTitle: 'Safe edit planning',
+    trDesc: 'Tam bağlamla kontrollü bir değişiklik planlayın.',
+    enDesc: 'Plan a controlled change with full context.',
     code: `I need to add a "status" column to d_order_summary. Find every object that references this DataWindow, check what retrieval arguments it uses, and tell me what else needs to change.`,
   },
   {
-    title: 'Dead code detection',
-    desc: 'Find objects nobody references.',
+    trTitle: 'Ölü kod tespiti', enTitle: 'Dead code detection',
+    trDesc: 'Kimse referans vermediği nesneleri bulun.',
+    enDesc: 'Find objects nobody references.',
     code: `List all user objects in shared.pbl. For each one, search the entire workspace to see if any other object references it. Report any that have zero references.`,
   },
 ];
@@ -45,22 +51,26 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base
-  title="PowerBuilder MCP — Prompt Library"
-  description="Real-world prompt examples for using PowerBuilder MCP with GitHub Copilot. Learn how to audit DataWindows, trace dependencies, plan migrations, and more."
+  title="PowerBuilder MCP — Prompt Kütüphanesi"
+  description="PowerBuilder MCP'yi GitHub Copilot ile kullanmak için gerçek dünya prompt örnekleri. DataWindow denetimi, bağımlılık izleme, migrasyon planlama ve daha fazlası."
   ogType="article"
   schema={schema}
 >
   <main class="section">
     <div class="container">
-      <div class="kicker">Prompt Library</div>
-      <h1 style="font-size:clamp(2rem,4vw,3.4rem);margin-bottom:14px">Copy-paste prompts<br>that actually work</h1>
-      <p class="top">Tested prompt patterns for common PowerBuilder analysis and modernization tasks. Paste these into Copilot Chat with the PowerBuilder MCP server connected.</p>
+      <div class="kicker" data-en="Prompt Library">Prompt Kütüphanesi</div>
+      <h1 class="page-title" data-en="Copy-paste prompts<br>that actually work">
+        Gerçekten çalışan<br>kopyala-yapıştır promptlar
+      </h1>
+      <p class="top" data-en="Tested prompt patterns for common PowerBuilder analysis and modernization tasks. Paste these into Copilot Chat with the PowerBuilder MCP server connected.">
+        Yaygın PowerBuilder analiz ve modernizasyon görevleri için test edilmiş prompt pattern'leri. Bunları PowerBuilder MCP sunucusu bağlıyken Copilot Chat'e yapıştırın.
+      </p>
 
       <div class="prompts">
         {prompts.map((p) => (
           <article class="prompt-card">
-            <h3>{p.title}</h3>
-            <p>{p.desc}</p>
+            <h3 data-en={p.enTitle}>{p.trTitle}</h3>
+            <p data-en={p.enDesc}>{p.trDesc}</p>
             <pre>{p.code}</pre>
           </article>
         ))}

@@ -1,13 +1,13 @@
 ---
 const tools = [
-  { name: 'list_libraries', desc: 'Enumerate available PBL libraries in the workspace' },
-  { name: 'list_objects', desc: 'Inspect objects in a specific library' },
-  { name: 'export_object', desc: 'Export an object into analyzable source format' },
-  { name: 'import_object', desc: 'Compile or import source back into a library' },
-  { name: 'search_objects', desc: 'Search by pattern and optional object type' },
-  { name: 'parse_datawindow', desc: 'Extract SQL, tables, and columns from exported DataWindows' },
-  { name: 'analyze_dependencies', desc: 'Identify object and function references' },
-  { name: 'find_nested_datawindows', desc: 'Locate nested DataWindow usage' },
+  { name: 'list_libraries', trDesc: 'Çalışma alanındaki PBL kütüphanelerini listele', enDesc: 'Enumerate available PBL libraries in the workspace' },
+  { name: 'list_objects', trDesc: 'Belirli bir kütüphanedeki nesneleri incele', enDesc: 'Inspect objects in a specific library' },
+  { name: 'export_object', trDesc: 'Bir nesneyi analiz edilebilir kaynak formatına dışa aktar', enDesc: 'Export an object into analyzable source format' },
+  { name: 'import_object', trDesc: 'Kaynağı kütüphaneye geri derle/import et', enDesc: 'Compile or import source back into a library' },
+  { name: 'search_objects', trDesc: 'Pattern ve opsiyonel nesne tipine göre ara', enDesc: 'Search by pattern and optional object type' },
+  { name: 'parse_datawindow', trDesc: 'Dışa aktarılan DataWindow\'lardan SQL, tablo ve kolonları çıkar', enDesc: 'Extract SQL, tables, and columns from exported DataWindows' },
+  { name: 'analyze_dependencies', trDesc: 'Nesne ve function referanslarını belirle', enDesc: 'Identify object and function references' },
+  { name: 'find_nested_datawindows', trDesc: 'İç içe DataWindow kullanımını bul', enDesc: 'Locate nested DataWindow usage' },
 ];
 
 const psInstall = `$WorkspaceDir = "C:\\projects\\sales_app"
@@ -55,51 +55,57 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base
-  title="PowerBuilder MCP — Documentation"
-  description="Complete installation and configuration guide for PowerBuilder MCP. Set up the MCP server, configure GitHub Copilot, verify the connection, and troubleshoot issues."
+  title="PowerBuilder MCP — Dokümanlar"
+  description="PowerBuilder MCP kurulum ve yapılandırma rehberi. MCP sunucusunu kurun, GitHub Copilot'u yapılandırın, bağlantıyı doğrulayın ve sorunları giderin."
   ogType="article"
   schema={schema}
 >
   <main class="section">
     <div class="container">
-      <div class="kicker">Documentation</div>
-      <h1 style="font-size:clamp(2rem,4vw,3.4rem);margin-bottom:14px">Install, configure, and verify<br>PowerBuilder MCP</h1>
-      <p class="top">Everything you need to connect your PowerBuilder workspace to GitHub Copilot via the MCP protocol.</p>
+      <div class="kicker" data-en="Documentation">Dokümantasyon</div>
+      <h1 class="page-title" data-en="Install, configure, and verify<br>PowerBuilder MCP">
+        PowerBuilder MCP'yi kurun,<br>yapılandırın ve doğrulayın
+      </h1>
+      <p class="top" data-en="Everything you need to connect your PowerBuilder workspace to GitHub Copilot via the MCP protocol.">
+        PowerBuilder çalışma alanınızı MCP protokolü üzerinden GitHub Copilot'a bağlamak için ihtiyacınız olan her şey.
+      </p>
 
       <div class="docs-shell">
         <!-- Sidebar nav -->
-        <aside class="side">
-          <h4>Quick start</h4>
-          <a class="active" href="#overview">Overview</a>
-          <a href="#install">Install</a>
-          <a href="#configure">Configure</a>
-          <a href="#verify">Verify</a>
-          <a href="#tools">Tool reference</a>
-          <a href="#troubleshooting">Troubleshooting</a>
+        <aside class="side" id="docsSide">
+          <h4 data-en="Quick start">Hızlı başlangıç</h4>
+          <a class="active" href="#overview" data-en="Overview">Genel bakış</a>
+          <a href="#install" data-en="Install">Kurulum</a>
+          <a href="#configure" data-en="Configure">Yapılandırma</a>
+          <a href="#verify" data-en="Verify">Doğrulama</a>
+          <a href="#tools" data-en="Tool reference">Tool referansı</a>
+          <a href="#troubleshooting" data-en="Troubleshooting">Sorun giderme</a>
         </aside>
 
         <!-- Content -->
-        <div>
+        <div class="docs-content">
           <section class="doc" id="overview">
-            <span class="tag">Overview</span>
-            <h3>How it works</h3>
-            <p>PowerBuilder MCP runs as a local stdio server that bridges your PowerBuilder workspace to MCP-compatible AI clients like GitHub Copilot. No source code leaves your machine.</p>
-            <div class="callout">
-              The server is configured via environment variables: <code>PB_WORKSPACE_DIR</code>,
+            <span class="tag" data-en="Overview">Genel bakış</span>
+            <h3 data-en="How it works">Nasıl çalışır</h3>
+            <p data-en="PowerBuilder MCP runs as a local stdio server that bridges your PowerBuilder workspace to MCP-compatible AI clients like GitHub Copilot. No source code leaves your machine.">
+              PowerBuilder MCP, PowerBuilder çalışma alanınızı GitHub Copilot gibi MCP uyumlu AI istemcilerine bağlayan yerel bir stdio sunucusu olarak çalışır. Hiçbir kaynak kodu makinenizi terk etmez.
+            </p>
+            <div class="callout" data-en="The server is configured via environment variables: <code>PB_WORKSPACE_DIR</code>, <code>PB_ORCA_PATH</code>, <code>PB_MCP_LICENSE</code>, <code>PB_MCP_LICENSE_API_URL</code>, and <code>PB_MCP_MACHINE_CODE</code>, with a PowerShell entrypoint in <code>run_mcp.ps1</code>.">
+              Sunucu ortam değişkenleri ile yapılandırılır: <code>PB_WORKSPACE_DIR</code>,
               <code>PB_ORCA_PATH</code>, <code>PB_MCP_LICENSE</code>,
-              <code>PB_MCP_LICENSE_API_URL</code>, and <code>PB_MCP_MACHINE_CODE</code>,
-              with a PowerShell entrypoint in <code>run_mcp.ps1</code>.
+              <code>PB_MCP_LICENSE_API_URL</code> ve <code>PB_MCP_MACHINE_CODE</code>,
+              <code>run_mcp.ps1</code> içinde bir PowerShell giriş noktasıyla.
             </div>
           </section>
 
           <section class="doc" id="install">
-            <span class="tag">Step 1</span>
-            <h3>Install prerequisites</h3>
+            <span class="tag" data-en="Step 1">Adım 1</span>
+            <h3 data-en="Install prerequisites">Önkoşulları kurun</h3>
             <ul>
-              <li>Windows environment compatible with your PowerBuilder runtime</li>
-              <li>GitHub Copilot in VS Code or another MCP-capable client</li>
-              <li>PowerBuilder workspace available locally</li>
-              <li>PowerBuilder MCP binary / release package</li>
+              <li data-en="Windows environment compatible with your PowerBuilder runtime">PowerBuilder runtime'ınız ile uyumlu Windows ortamı</li>
+              <li data-en="GitHub Copilot in VS Code or another MCP-capable client">VS Code'da GitHub Copilot veya başka bir MCP uyumlu istemci</li>
+              <li data-en="PowerBuilder workspace available locally">Yerel olarak kullanılabilir PowerBuilder çalışma alanı</li>
+              <li data-en="PowerBuilder MCP binary / release package">PowerBuilder MCP binary / release paketi</li>
             </ul>
             <div class="codebox">
               <div class="codebox-head"><span>PowerShell</span><span>run_mcp.ps1</span></div>
@@ -108,9 +114,11 @@ import Base from '../layouts/Base.astro';
           </section>
 
           <section class="doc" id="configure">
-            <span class="tag">Step 2</span>
-            <h3>Configure Copilot MCP</h3>
-            <p>Register PowerBuilder MCP as a local stdio server in your Copilot settings.</p>
+            <span class="tag" data-en="Step 2">Adım 2</span>
+            <h3 data-en="Configure Copilot MCP">Copilot MCP'yi yapılandırın</h3>
+            <p data-en="Register PowerBuilder MCP as a local stdio server in your Copilot settings.">
+              PowerBuilder MCP'yi Copilot ayarlarınızda yerel bir stdio sunucusu olarak kaydedin.
+            </p>
             <div class="codebox">
               <div class="codebox-head"><span>settings.json</span><span>VS Code → Copilot</span></div>
               <pre set:html={settingsJson}></pre>
@@ -118,38 +126,41 @@ import Base from '../layouts/Base.astro';
           </section>
 
           <section class="doc" id="verify">
-            <span class="tag">Step 3</span>
-            <h3>Verify the connection</h3>
-            <p>Run a smoke test to confirm the MCP server initializes correctly.</p>
+            <span class="tag" data-en="Step 3">Adım 3</span>
+            <h3 data-en="Verify the connection">Bağlantıyı doğrulayın</h3>
+            <p data-en="Run a smoke test to confirm the MCP server initializes correctly.">
+              MCP sunucusunun doğru başlatıldığını doğrulamak için bir smoke test çalıştırın.
+            </p>
             <div class="codebox">
               <div class="codebox-head"><span>PowerShell</span><span>smoke test</span></div>
               <pre set:html={smokeTest}></pre>
             </div>
-            <p>Then open Copilot Chat and ask a low-risk discovery question like "list libraries in this workspace" before trying heavier analysis prompts.</p>
+            <p data-en='Then open Copilot Chat and ask a low-risk discovery question like "list libraries in this workspace" before trying heavier analysis prompts.'>
+              Ardından Copilot Chat'i açın ve daha ağır analiz promptlarını denemeden önce "bu çalışma alanındaki kütüphaneleri listele" gibi düşük riskli bir keşif sorusu sorun.
+            </p>
           </section>
 
           <section class="doc" id="tools">
-            <span class="tag">Reference</span>
-            <h3>Tool reference</h3>
+            <span class="tag" data-en="Reference">Referans</span>
+            <h3 data-en="Tool reference">Tool referansı</h3>
             <ul>
               {tools.map((t) => (
-                <li><code>{t.name}</code> — {t.desc}</li>
+                <li><code>{t.name}</code> — <span data-en={t.enDesc}>{t.trDesc}</span></li>
               ))}
             </ul>
           </section>
 
           <section class="doc" id="troubleshooting">
-            <span class="tag">Support</span>
-            <h3>Troubleshooting</h3>
+            <span class="tag" data-en="Support">Destek</span>
+            <h3 data-en="Troubleshooting">Sorun giderme</h3>
             <ul>
-              <li>The PowerBuilder runtime path must be valid on the local machine.</li>
-              <li>Check process architecture compatibility (32-bit vs 64-bit).</li>
-              <li>Verify your license key is valid and not expired.</li>
-              <li>Ensure <code>PB_WORKSPACE_DIR</code> points to a valid <code>.pbw</code> file.</li>
+              <li data-en="The PowerBuilder runtime path must be valid on the local machine.">PowerBuilder runtime yolu yerel makinede geçerli olmalıdır.</li>
+              <li data-en="Check process architecture compatibility (32-bit vs 64-bit).">İşlemci mimarisi uyumluluğunu kontrol edin (32-bit vs 64-bit).</li>
+              <li data-en="Verify your license key is valid and not expired.">Lisans anahtarınızın geçerli ve süresi dolmamış olduğunu doğrulayın.</li>
+              <li data-en='Ensure <code>PB_WORKSPACE_DIR</code> points to a valid <code>.pbw</code> file.'><code>PB_WORKSPACE_DIR</code>'in geçerli bir <code>.pbw</code> dosyasına işaret ettiğinden emin olun.</li>
             </ul>
-            <div class="callout">
-              For enterprise support: trial activation, license validation, on-prem rollout,
-              and secure workstation setup — contact your account team.
+            <div class="callout" data-en="For enterprise support: trial activation, license validation, on-prem rollout, and secure workstation setup — contact your account team.">
+              Kurumsal destek için: deneme aktivasyonu, lisans doğrulama, on-prem dağıtım ve güvenli iş istasyonu kurulumu — hesap ekibinizle iletişime geçin.
             </div>
           </section>
         </div>

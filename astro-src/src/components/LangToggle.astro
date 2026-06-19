@@ -1,0 +1,57 @@
+---
+// Language toggle component — TR default, EN optional
+---
+
+<button class="lang-toggle" id="langToggle" aria-label="Dil değiştir">
+  <span class="lang-active">TR</span>
+  <span class="lang-sep">/</span>
+  <span class="lang-inactive">EN</span>
+</button>
+
+<script is:inline>
+  (function () {
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      var toggle = document.getElementById('langToggle');
+      if (!toggle) return;
+      var active = toggle.querySelector('.lang-active');
+      var inactive = toggle.querySelector('.lang-inactive');
+
+      if (lang === 'en') {
+        active.textContent = 'EN';
+        inactive.textContent = 'TR';
+        document.querySelectorAll('[data-en]').forEach(function (el) {
+          if (!el.dataset.tr) el.dataset.tr = el.innerHTML;
+          el.innerHTML = el.dataset.en;
+        });
+      } else {
+        active.textContent = 'TR';
+        inactive.textContent = 'EN';
+        document.querySelectorAll('[data-tr]').forEach(function (el) {
+          el.innerHTML = el.dataset.tr;
+        });
+      }
+      try { localStorage.setItem('pbmcp-lang', lang); } catch (e) {}
+    }
+
+    // Init from localStorage
+    var saved = 'tr';
+    try { saved = localStorage.getItem('pbmcp-lang') || 'tr'; } catch (e) {}
+    if (saved === 'en') {
+      // Apply after DOM ready
+      document.addEventListener('DOMContentLoaded', function () {
+        setLang('en');
+      });
+    }
+
+    // Wire toggle
+    document.addEventListener('DOMContentLoaded', function () {
+      var toggle = document.getElementById('langToggle');
+      if (!toggle) return;
+      toggle.addEventListener('click', function () {
+        var current = document.documentElement.lang === 'en' ? 'en' : 'tr';
+        setLang(current === 'en' ? 'tr' : 'en');
+      });
+    });
+  })();
+</script>
