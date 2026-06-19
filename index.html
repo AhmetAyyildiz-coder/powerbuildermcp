@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PowerBuilder MCP — AI-Powered Modernization for PowerBuilder</title>
+<meta name="description" content="Bridge PowerBuilder 12.5 to GitHub Copilot via MCP. Programmatic PBL access through pborca.dll — explore, refactor, and modernize legacy codebases with AI.">
+<meta property="og:title" content="PowerBuilder MCP">
+<meta property="og:description" content="Bridge PowerBuilder to AI. Programmatic PBL access for Copilot.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://powerbuildermcp.com">
+<style>
+/* ============================================
+   POWERBUILDER MCP — LANDING PAGE
+   Design system: dark, technical, precise
+   ============================================ */
+
+:root {
+  /* Palette */
+  --bg: #08090b;
+  --bg-elev: #0e0f13;
+  --bg-card: #121318;
+  --bg-hover: #181a20;
+  --border: #1e2028;
+  --border-bright: #2a2d38;
+  --text: #e8e9ed;
+  --text-secondary: #9b9da8;
+  --text-muted: #5c5e6a;
+  --accent: #5b8def;
+  --accent-bright: #7aa3f8;
+  --accent-dim: rgba(91, 141, 239, 0.12);
+  --accent-glow: rgba(91, 141, 239, 0.25);
+  --powerbuilder-orange: #f97316;
+  --powerbuilder-orange-dim: rgba(249, 115, 22, 0.1);
+  --mcp-green: #10b981;
+  --mcp-green-dim: rgba(16, 185, 129, 0.1);
+  --terminal-bg: #0c0d11;
+
+  /* Type */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+
+  /* Spacing & radii */
+  --radius: 8px;
+  --radius-lg: 14px;
+  --max-width: 1140px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(8, 9, 11, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+
+nav.scrolled {
+  border-bottom-color: var(--border-bright);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+}
+
+.nav-logo-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--powerbuilder-orange), #ea580c);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-bright);
+  padding: 7px 16px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  transition: all 0.2s ease;
+}
+
+.nav-cta:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+  color: var(--accent-bright);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.hero {
+  position: relative;
+  padding: 160px 24px 100px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, var(--accent-dim) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-bright);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge .dot {
+  width: 7px;
+  height: 7px;
+  background: var(--mcp-green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--mcp-green);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--powerbuilder-orange), #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero h1 .highlight-blue {
+  background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: var(--text-secondary);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.55;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 0 0 var(--accent-glow);
+}
+
+.btn-primary:hover {
+  background: var(--accent-bright);
+  box-shadow: 0 0 24px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-bright);
+  color: var(--text);
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+  color: var(--accent-bright);
+}
+
+/* ============================================
+   ARCHITECTURE DIAGRAM
+   ============================================ */
+
+.arch-section {
+  padding: 60px 24px 80px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.arch-diagram {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.arch-diagram::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+}
+
+.arch-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 36px;
+  min-width: 180px;
+  position: relative;
+  z-index: 1;
+}
+
+.arch-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 18px;
+  border: 1px solid var(--border-bright);
+}
+
+.arch-icon.pb {
+  background: var(--powerbuilder-orange-dim);
+  border-color: rgba(249, 115, 22, 0.3);
+  color: var(--powerbuilder-orange);
+}
+
+.arch-icon.mcp {
+  background: var(--accent-dim);
+  border-color: rgba(91, 141, 239, 0.3);
+  color: var(--accent-bright);
+}
+
+.arch-icon.copilot {
+  background: var(--mcp-green-dim);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--mcp-green);
+}
+
+.arch-label {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.arch-sublabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
+.arch-connector {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  position: relative;
+}
+
+.arch-connector .line {
+  width: 60px;
+  height: 2px;
+  background: var(--border-bright);
+  position: relative;
+}
+
+.arch-connector .line::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -3px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid var(--border-bright);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.arch-connector .label {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ============================================
+   CODE DEMO
+   ============================================ */
+
+.code-section {
+  padding: 80px 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 580px;
+  margin-bottom: 48px;
+}
+
+.code-block {
+  background: var(--terminal-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border);
+}
+
+.code-dots {
+  display: flex;
+  gap: 7px;
+}
+
+.code-dots span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--border-bright);
+}
+
+.code-dots span:nth-child(1) { background: #ff5f57; }
+.code-dots span:nth-child(2) { background: #febc2e; }
+.code-dots span:nth-child(3) { background: #28c840; }
+
+.code-file {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.code-block pre {
+  padding: 24px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.7;
+  overflow-x: auto;
+  color: var(--text);
+}
+
+.code-block pre::-webkit-scrollbar { height: 6px; }
+.code-block pre::-webkit-scrollbar-track { background: transparent; }
+.code-block pre::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+
+/* Syntax highlight */
+.tk-keyword { color: #c678dd; }
+.tk-string { color: #98c379; }
+.tk-comment { color: #5c6370; font-style: italic; }
+.tk-function { color: #61afef; }
+.tk-type { color: #e5c07b; }
+.tk-number { color: #d19a66; }
+.tk-prop { color: #e06c75; }
+
+/* ============================================
+   FEATURES
+   ============================================ */
+
+.features {
+  padding: 80px 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  padding: 32px 28px;
+  transition: background 0.2s ease;
+}
+
+.feature-card:hover {
+  background: var(--bg-hover);
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(91, 141, 239, 0.15);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent-bright);
+  margin-bottom: 16px;
+}
+
+.feature-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.feature-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ============================================
+   WORKFLOW / HOW IT WORKS
+   ============================================ */
+
+.workflow {
+  padding: 80px 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.workflow-steps {
+  display: flex;
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.workflow-step {
+  flex: 1;
+  position: relative;
+}
+
+.step-number {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent-bright);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.step-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.step-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.step-line {
+  position: absolute;
+  top: 28px;
+  right: -12px;
+  width: 24px;
+  height: 1px;
+  background: var(--border-bright);
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+
+.cta-section {
+  padding: 80px 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.cta-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-lg);
+  padding: 64px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, var(--accent-dim) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cta-card h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-card p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 auto 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-card .hero-actions {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 24px 32px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.footer-brand {
+  max-width: 280px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 12px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 64px;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.footer-col a {
+  display: block;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: var(--text);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .arch-diagram {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .arch-connector {
+    height: auto;
+    width: auto;
+    transform: rotate(90deg);
+  }
+  .workflow-steps {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .step-line {
+    display: none;
+  }
+  .footer-top {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-links a:not(.nav-cta) {
+    display: none;
+  }
+  .hero {
+    padding: 120px 20px 80px;
+  }
+  .arch-diagram {
+    padding: 32px 20px;
+  }
+  .cta-card {
+    padding: 48px 24px;
+  }
+  .footer-links {
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">PB</div>
+      <span>PowerBuilder MCP</span>
+    </a>
+    <div class="nav-links">
+      <a href="#how">How It Works</a>
+      <a href="#features">Features</a>
+      <a href="#code">Examples</a>
+      <a href="#install" class="nav-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Get Started
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    MCP Protocol · PowerBuilder 12.5 · pborca.dll
+  </div>
+  <h1>
+    Bring <span class="highlight">PowerBuilder</span><br>
+    Into the <span class="highlight-blue">AI Era</span>
+  </h1>
+  <p class="hero-sub">
+    An MCP server that gives GitHub Copilot direct, programmatic access to your PowerBuilder PBL objects — through the native pborca.dll interface. Explore, analyze, and modernize legacy codebases with AI that actually understands your code.
+  </p>
+  <div class="hero-actions">
+    <a href="#install" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Get Started
+    </a>
+    <a href="#code" class="btn-secondary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+      View Examples
+    </a>
+  </div>
+</section>
+
+<!-- ============================================
+     ARCHITECTURE DIAGRAM
+     ============================================ -->
+<section class="arch-section">
+  <div class="arch-diagram">
+    <div class="arch-node">
+      <div class="arch-icon pb">PB</div>
+      <div class="arch-label">PowerBuilder 12.5</div>
+      <div class="arch-sublabel">.pbl / .pbt</div>
+    </div>
+    <div class="arch-connector">
+      <div class="line"></div>
+      <div class="label">pborca.dll</div>
+    </div>
+    <div class="arch-node">
+      <div class="arch-icon mcp">MCP</div>
+      <div class="arch-label">PowerBuilder MCP</div>
+      <div class="arch-sublabel">Server · stdio</div>
+    </div>
+    <div class="arch-connector">
+      <div class="line"></div>
+      <div class="label">JSON-RPC</div>
+    </div>
+    <div class="arch-node">
+      <div class="arch-icon copilot">AI</div>
+      <div class="arch-label">GitHub Copilot</div>
+      <div class="arch-sublabel">VS Code · IDE</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CODE DEMO
+     ============================================ -->
+<section class="code-section" id="code">
+  <div class="section-label">Example</div>
+  <h2 class="section-title">Copilot reads your PBLs<br>like any modern codebase</h2>
+  <p class="section-desc">Once configured, Copilot can explore objects, list dependencies, extract source code, and suggest refactors — all through standard MCP tool calls.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><span></span><span></span><span></span></div>
+      <div class="code-file">copilot-conversation.md</div>
+    </div>
+<pre><span class="tk-comment">// User asks Copilot:</span>
+<span class="tk-prop">Find all DataWindows in the sales module</span> that reference
+the "customer_id" column and list their retrieval arguments.
+
+<span class="tk-comment">// Copilot calls MCP tools:</span>
+<span class="tk-function">pb_list_objects</span>(<span class="tk-string">"sales.pbl"</span>, <span class="tk-string">"datawindow"</span>)
+  → <span class="tk-string">d_customer_list, d_order_summary, d_invoice_detail</span>
+
+<span class="tk-function">pb_get_source</span>(<span class="tk-string">"sales.pbl"</span>, <span class="tk-string">"d_order_summary"</span>)
+  → returns full DataWindow syntax with retrieval args:
+    <span class="tk-type">arguments</span>:
+      (<span class="tk-string">"order_id"</span>, <span class="tk-string">"number"</span>)
+      (<span class="tk-string">"customer_id"</span>, <span class="tk-string">"number"</span>)
+
+<span class="tk-comment">// Copilot responds:</span>
+Found <span class="tk-number">2</span> DataWindows referencing "customer_id":
+
+  d_order_summary (sales.pbl)
+    retrieval args: order_id, customer_id
+    SQL: WHERE orders.customer_id = :customer_id
+
+  d_invoice_detail (sales.pbl)
+    retrieval args: invoice_id, customer_id
+    SQL: WHERE invoices.customer_id = :customer_id
+
+Would you like me to suggest a shared retrieval argument
+signature for consistency?</pre>
+  </div>
+</section>
+
+<!-- ============================================
+     FEATURES
+     ============================================ -->
+<section class="features" id="features">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title">Everything Copilot needs<br>to work with PowerBuilder</h2>
+  <p class="section-desc">Built on the native ORCA interface — not screen scraping, not file parsing. Direct programmatic access to the PowerBuilder object model.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">01</div>
+      <div class="feature-title">Object Exploration</div>
+      <div class="feature-desc">List all objects in a PBL by type — windows, DataWindows, functions, structures, user objects. Navigate the object hierarchy programmatically.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">02</div>
+      <div class="feature-title">Source Extraction</div>
+      <div class="feature-desc">Export full source code of any PowerBuilder object through pborca.dll. Copilot sees your actual code, not guesses.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">03</div>
+      <div class="feature-title">Dependency Mapping</div>
+      <div class="feature-desc">Identify which objects reference others. Understand the blast radius of changes before you make them.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">04</div>
+      <div class="feature-title">Search & Analysis</div>
+      <div class="feature-desc">Search across all PBLs for specific patterns, function calls, SQL statements, or column references. Find dead code and duplication.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">05</div>
+      <div class="feature-title">Compile & Validate</div>
+      <div class="feature-desc">Trigger incremental builds through ORCA. Let Copilot verify its own suggestions compile before presenting them.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">06</div>
+      <div class="feature-title">Modernization Insights</div>
+      <div class="feature-desc">Generate migration reports. Identify C# equivalents for PowerScript patterns. Plan incremental modernization roadmaps.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     WORKFLOW / HOW IT WORKS
+     ============================================ -->
+<section class="workflow" id="how">
+  <div class="section-label">How It Works</div>
+  <h2 class="section-title">Three steps. No changes<br>to your PowerBuilder setup.</h2>
+
+  <div class="workflow-steps">
+    <div class="workflow-step">
+      <div class="step-number">STEP 01</div>
+      <div class="step-title">Install the MCP Server</div>
+      <div class="step-desc">Add PowerBuilder MCP to your Copilot configuration. Point it at your workspace and pborca.dll location.</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="workflow-step">
+      <div class="step-number">STEP 02</div>
+      <div class="step-title">Open Copilot</div>
+      <div class="step-desc">Launch VS Code or your IDE with Copilot Chat. The PowerBuilder tools are now available alongside standard Copilot capabilities.</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="workflow-step">
+      <div class="step-number">STEP 03</div>
+      <div class="step-title">Ask Anything</div>
+      <div class="step-desc">Copilot reads your PBLs, understands PowerScript and DataWindow syntax, and helps you refactor, debug, and modernize.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     INSTALL CODE
+     ============================================ -->
+<section class="code-section" id="install">
+  <div class="section-label">Installation</div>
+  <h2 class="section-title">Up and running<br>in under two minutes</h2>
+  <p class="section-desc">Add the MCP server configuration to your Copilot settings file.</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><span></span><span></span><span></span></div>
+      <div class="code-file">settings.json — Copilot MCP Configuration</div>
+    </div>
+<pre>{
+  <span class="tk-prop">"github.copilot.chat.mcp.servers"</span>: {
+    <span class="tk-prop">"powerbuilder"</span>: {
+      <span class="tk-prop">"command"</span>: <span class="tk-string">"pb-mcp-server"</span>,
+      <span class="tk-prop">"args"</span>: [],
+      <span class="tk-prop">"env"</span>: {
+        <span class="tk-prop">"PB_ORCA_PATH"</span>: <span class="tk-string">"C:\\Program Files\\Appeon\\PowerBuilder 12.5\\pborca.dll"</span>,
+        <span class="tk-prop">"PB_WORKSPACE"</span>: <span class="tk-string">"C:\\Projects\\MyApp\\myapp.pbw"</span>
+      }
+    }
+  }
+}</pre>
+  </div>
+</section>
+
+<!-- ============================================
+     CTA
+     ============================================ -->
+<section class="cta-section">
+  <div class="cta-card">
+    <h2>Stop fighting legacy.<br>Start modernizing.</h2>
+    <p>Give your team the AI tools they need to understand, maintain, and evolve PowerBuilder applications.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download
+      </a>
+      <a href="#code" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+        Read the Docs
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <div class="nav-logo-icon">PB</div>
+        <span>PowerBuilder MCP</span>
+      </div>
+      <p>The MCP bridge between PowerBuilder 12.5 and AI coding assistants.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#install">Installation</a>
+        <a href="#code">Examples</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="#">Documentation</a>
+        <a href="#">API Reference</a>
+        <a href="#">Changelog</a>
+        <a href="#">GitHub</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">License</a>
+        <a href="#">Privacy</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 PowerBuilder MCP. All rights reserved.</span>
+    <span>powerbuildermcp.com</span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
