@@ -1,0 +1,14 @@
+{
+  "name": "powerbuilder-mcp-site",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0 --port 8091",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0 --port 8092",
+    "deploy": "astro build && rsync -av --delete dist/ ../"
+  },
+  "dependencies": {
+    "astro": "^5"
+  }
+}

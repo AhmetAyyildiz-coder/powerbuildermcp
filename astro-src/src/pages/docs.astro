@@ -1,0 +1,159 @@
+---
+const tools = [
+  { name: 'list_libraries', desc: 'Enumerate available PBL libraries in the workspace' },
+  { name: 'list_objects', desc: 'Inspect objects in a specific library' },
+  { name: 'export_object', desc: 'Export an object into analyzable source format' },
+  { name: 'import_object', desc: 'Compile or import source back into a library' },
+  { name: 'search_objects', desc: 'Search by pattern and optional object type' },
+  { name: 'parse_datawindow', desc: 'Extract SQL, tables, and columns from exported DataWindows' },
+  { name: 'analyze_dependencies', desc: 'Identify object and function references' },
+  { name: 'find_nested_datawindows', desc: 'Locate nested DataWindow usage' },
+];
+
+const psInstall = `$WorkspaceDir = "C:\\projects\\sales_app"
+$OrcaPath     = "C:\\path\\to\\native\\runtime"
+$LicenseKey   = "PBMCP-XXXX-XXXX-XXXX"
+
+powershell -ExecutionPolicy Bypass -File .\\run_mcp.ps1 \`
+  -WorkspaceDir $WorkspaceDir \`
+  -OrcaPath $OrcaPath \`
+  -LicenseKey $LicenseKey`;
+
+const settingsJson = `{
+  "github.copilot.chat.mcp.servers": {
+    "powerbuilder": {
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy", "Bypass",
+        "-File", "C:\\\\PowerBuilderMCP\\\\run_mcp.ps1"
+      ],
+      "env": {
+        "PB_WORKSPACE_DIR": "C:\\\\projects\\\\sales_app",
+        "PB_ORCA_PATH": "C:\\\\path\\\\to\\\\native\\\\runtime",
+        "PB_MCP_LICENSE": "PBMCP-XXXX-XXXX-XXXX"
+      }
+    }
+  }
+}`;
+
+const smokeTest = `powershell -ExecutionPolicy Bypass -File .\\run_mcp.ps1 -SmokeTest
+
+# expected outcome:
+# initialize request succeeds and the MCP server responds`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'PowerBuilder MCP — Installation and Configuration Guide',
+  description: 'Complete installation and configuration guide for PowerBuilder MCP.',
+  author: { '@type': 'Organization', name: 'PowerBuilder MCP' },
+  publisher: { '@type': 'Organization', name: 'PowerBuilder MCP' },
+  url: 'https://powerbuildermcp.com/docs',
+};
+
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="PowerBuilder MCP — Documentation"
+  description="Complete installation and configuration guide for PowerBuilder MCP. Set up the MCP server, configure GitHub Copilot, verify the connection, and troubleshoot issues."
+  ogType="article"
+  schema={schema}
+>
+  <main class="section">
+    <div class="container">
+      <div class="kicker">Documentation</div>
+      <h1 style="font-size:clamp(2rem,4vw,3.4rem);margin-bottom:14px">Install, configure, and verify<br>PowerBuilder MCP</h1>
+      <p class="top">Everything you need to connect your PowerBuilder workspace to GitHub Copilot via the MCP protocol.</p>
+
+      <div class="docs-shell">
+        <!-- Sidebar nav -->
+        <aside class="side">
+          <h4>Quick start</h4>
+          <a class="active" href="#overview">Overview</a>
+          <a href="#install">Install</a>
+          <a href="#configure">Configure</a>
+          <a href="#verify">Verify</a>
+          <a href="#tools">Tool reference</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+        </aside>
+
+        <!-- Content -->
+        <div>
+          <section class="doc" id="overview">
+            <span class="tag">Overview</span>
+            <h3>How it works</h3>
+            <p>PowerBuilder MCP runs as a local stdio server that bridges your PowerBuilder workspace to MCP-compatible AI clients like GitHub Copilot. No source code leaves your machine.</p>
+            <div class="callout">
+              The server is configured via environment variables: <code>PB_WORKSPACE_DIR</code>,
+              <code>PB_ORCA_PATH</code>, <code>PB_MCP_LICENSE</code>,
+              <code>PB_MCP_LICENSE_API_URL</code>, and <code>PB_MCP_MACHINE_CODE</code>,
+              with a PowerShell entrypoint in <code>run_mcp.ps1</code>.
+            </div>
+          </section>
+
+          <section class="doc" id="install">
+            <span class="tag">Step 1</span>
+            <h3>Install prerequisites</h3>
+            <ul>
+              <li>Windows environment compatible with your PowerBuilder runtime</li>
+              <li>GitHub Copilot in VS Code or another MCP-capable client</li>
+              <li>PowerBuilder workspace available locally</li>
+              <li>PowerBuilder MCP binary / release package</li>
+            </ul>
+            <div class="codebox">
+              <div class="codebox-head"><span>PowerShell</span><span>run_mcp.ps1</span></div>
+              <pre set:html={psInstall}></pre>
+            </div>
+          </section>
+
+          <section class="doc" id="configure">
+            <span class="tag">Step 2</span>
+            <h3>Configure Copilot MCP</h3>
+            <p>Register PowerBuilder MCP as a local stdio server in your Copilot settings.</p>
+            <div class="codebox">
+              <div class="codebox-head"><span>settings.json</span><span>VS Code → Copilot</span></div>
+              <pre set:html={settingsJson}></pre>
+            </div>
+          </section>
+
+          <section class="doc" id="verify">
+            <span class="tag">Step 3</span>
+            <h3>Verify the connection</h3>
+            <p>Run a smoke test to confirm the MCP server initializes correctly.</p>
+            <div class="codebox">
+              <div class="codebox-head"><span>PowerShell</span><span>smoke test</span></div>
+              <pre set:html={smokeTest}></pre>
+            </div>
+            <p>Then open Copilot Chat and ask a low-risk discovery question like "list libraries in this workspace" before trying heavier analysis prompts.</p>
+          </section>
+
+          <section class="doc" id="tools">
+            <span class="tag">Reference</span>
+            <h3>Tool reference</h3>
+            <ul>
+              {tools.map((t) => (
+                <li><code>{t.name}</code> — {t.desc}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section class="doc" id="troubleshooting">
+            <span class="tag">Support</span>
+            <h3>Troubleshooting</h3>
+            <ul>
+              <li>The PowerBuilder runtime path must be valid on the local machine.</li>
+              <li>Check process architecture compatibility (32-bit vs 64-bit).</li>
+              <li>Verify your license key is valid and not expired.</li>
+              <li>Ensure <code>PB_WORKSPACE_DIR</code> points to a valid <code>.pbw</code> file.</li>
+            </ul>
+            <div class="callout">
+              For enterprise support: trial activation, license validation, on-prem rollout,
+              and secure workstation setup — contact your account team.
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</Base>

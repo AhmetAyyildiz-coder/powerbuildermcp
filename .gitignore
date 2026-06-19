@@ -1,0 +1,16 @@
+# Dependencies
+astro-src/node_modules/
+
+# Build output (committed to root for GitHub Pages)
+astro-src/dist/
+
+# Astro
+astro-src/.astro/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local

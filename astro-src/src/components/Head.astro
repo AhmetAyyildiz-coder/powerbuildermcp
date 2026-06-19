@@ -1,0 +1,52 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogType?: string;
+  schema?: object | object[];
+}
+const {
+  title,
+  description,
+  canonical,
+  ogType = 'website',
+  schema,
+} = Astro.props;
+
+const site = 'https://powerbuildermcp.com';
+const url = canonical || `${site}${Astro.url.pathname}`;
+const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content="PowerBuilder MCP" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href={url} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content="PowerBuilder MCP" />
+<meta property="og:image" content={`${site}/assets/og-image.png`} />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={url} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={`${site}/assets/og-image.png`} />
+
+<!-- JSON-LD Schema -->
+{schemas.map((s) => (
+  <script type="application/ld+json" set:html={JSON.stringify(s)} />
+))}
+
+<link rel="icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/styles/global.css" />
