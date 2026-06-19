@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PowerBuilder MCP — Dokümanlar</title><meta name="description" content="PowerBuilder MCP kurulum ve yapılandırma rehberi. MCP sunucusunu kurun, GitHub Copilot'u yapılandırın, bağlantıyı doğrulayın ve sorunları giderin."><meta name="author" content="PowerBuilder MCP"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://powerbuildermcp.com/docs/"><!-- Open Graph --><meta property="og:type" content="article"><meta property="og:url" content="https://powerbuildermcp.com/docs/"><meta property="og:title" content="PowerBuilder MCP — Dokümanlar"><meta property="og:description" content="PowerBuilder MCP kurulum ve yapılandırma rehberi. MCP sunucusunu kurun, GitHub Copilot'u yapılandırın, bağlantıyı doğrulayın ve sorunları giderin."><meta property="og:site_name" content="PowerBuilder MCP"><meta property="og:image" content="https://powerbuildermcp.com/assets/og-image.png"><meta property="og:locale" content="en_US"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="https://powerbuildermcp.com/docs/"><meta name="twitter:title" content="PowerBuilder MCP — Dokümanlar"><meta name="twitter:description" content="PowerBuilder MCP kurulum ve yapılandırma rehberi. MCP sunucusunu kurun, GitHub Copilot'u yapılandırın, bağlantıyı doğrulayın ve sorunları giderin."><meta name="twitter:image" content="https://powerbuildermcp.com/assets/og-image.png"><!-- JSON-LD Schema --><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"PowerBuilder MCP — Installation and Configuration Guide","description":"Complete installation and configuration guide for PowerBuilder MCP.","author":{"@type":"Organization","name":"PowerBuilder MCP"},"publisher":{"@type":"Organization","name":"PowerBuilder MCP"},"url":"https://powerbuildermcp.com/docs"}</script><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/styles/global.css"><link rel="stylesheet" href="/_astro/Base.DtWFETfq.css"></head> <body> <header class="nav"> <div class="container"> <a class="brand" href="/"> <span class="brand-badge">PB</span> <span>PowerBuilder MCP</span> </a> <button class="nav-toggle" id="navToggle" aria-label="Menü">☰</button> <nav class="nav-links" id="navLinks"> <a href="/#features" data-en="Features">Özellikler</a><a href="/#architecture" data-en="Architecture">Mimari</a><a href="/docs" data-en="Docs">Dokümanlar</a><a href="/prompts" data-en="Prompts">Promptlar</a><a href="/#faq" data-en="FAQ">SSS</a> <a class="btn" href="/docs" data-en="Get started">Başla</a> <button class="lang-toggle" id="langToggle" aria-label="Dil değiştir"> <span class="lang-active">TR</span> <span class="lang-sep">/</span> <span class="lang-inactive">EN</span> </button> <script>
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PowerBuilder MCP — Dokümanlar</title><meta name="description" content="PowerBuilder MCP kurulum ve yapılandırma rehberi."><meta name="author" content="PowerBuilder MCP"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://powerbuildermcp.com/docs/"><!-- Open Graph --><meta property="og:type" content="article"><meta property="og:url" content="https://powerbuildermcp.com/docs/"><meta property="og:title" content="PowerBuilder MCP — Dokümanlar"><meta property="og:description" content="PowerBuilder MCP kurulum ve yapılandırma rehberi."><meta property="og:site_name" content="PowerBuilder MCP"><meta property="og:image" content="https://powerbuildermcp.com/assets/og-image.png"><meta property="og:locale" content="en_US"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="https://powerbuildermcp.com/docs/"><meta name="twitter:title" content="PowerBuilder MCP — Dokümanlar"><meta name="twitter:description" content="PowerBuilder MCP kurulum ve yapılandırma rehberi."><meta name="twitter:image" content="https://powerbuildermcp.com/assets/og-image.png"><!-- JSON-LD Schema --><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"PowerBuilder MCP — Installation and Configuration Guide","description":"Complete installation and configuration guide for PowerBuilder MCP.","author":{"@type":"Organization","name":"PowerBuilder MCP"},"publisher":{"@type":"Organization","name":"PowerBuilder MCP"},"url":"https://powerbuildermcp.com/docs"}</script><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/styles/global.css"><link rel="stylesheet" href="/_astro/Base.XZxt2MAm.css"></head> <body> <header class="nav"> <div class="container"> <a class="brand" href="/"> <span class="brand-badge">PB</span> <span>PowerBuilder MCP</span> </a> <button class="nav-toggle" id="navToggle" aria-label="Menü">☰</button> <nav class="nav-links" id="navLinks"> <a href="/#features" data-en="Features">Özellikler</a><a href="/#architecture" data-en="Architecture">Mimari</a><a href="/docs" data-en="Docs">Dokümanlar</a><a href="/prompts" data-en="Prompts">Promptlar</a><a href="/#faq" data-en="FAQ">SSS</a> <a class="btn" href="/docs" data-en="Get started">Başla</a> <button class="lang-toggle" id="langToggle" aria-label="Dil değiştir"> <span class="lang-active">TR</span> <span class="lang-sep">/</span> <span class="lang-inactive">EN</span> </button> <script>
   (function () {
     function setLang(lang) {
       document.documentElement.lang = lang;
@@ -44,24 +44,23 @@
       });
     });
   })();
-</script> </nav> </div> </header> <script type="module">const n=document.getElementById("navToggle"),e=document.getElementById("navLinks");n?.addEventListener("click",()=>e?.classList.toggle("open"));e?.querySelectorAll("a").forEach(t=>t.addEventListener("click",()=>e.classList.remove("open")));</script>  <main class="section"> <div class="container"> <div class="kicker" data-en="Documentation">Dokümantasyon</div> <h1 class="page-title" data-en="Install, configure, and verify<br>PowerBuilder MCP">
-PowerBuilder MCP'yi kurun,<br>yapılandırın ve doğrulayın
+</script> </nav> </div> </header> <script type="module">const n=document.getElementById("navToggle"),e=document.getElementById("navLinks");n?.addEventListener("click",()=>e?.classList.toggle("open"));e?.querySelectorAll("a").forEach(t=>t.addEventListener("click",()=>e.classList.remove("open")));</script>  <main class="section"> <div class="container"> <div class="kicker" data-en="Documentation">Dokümantasyon</div> <h1 class="page-title" data-en="Install, configure, and verify PowerBuilder MCP">
+PowerBuilder MCP'yi kurun, yapılandırın ve doğrulayın
 </h1> <p class="top" data-en="Everything you need to connect your PowerBuilder workspace to GitHub Copilot via the MCP protocol.">
 PowerBuilder çalışma alanınızı MCP protokolü üzerinden GitHub Copilot'a bağlamak için ihtiyacınız olan her şey.
-</p> <div class="docs-shell"> <!-- Sidebar nav --> <aside class="side" id="docsSide"> <h4 data-en="Quick start">Hızlı başlangıç</h4> <a class="active" href="#overview" data-en="Overview">Genel bakış</a> <a href="#install" data-en="Install">Kurulum</a> <a href="#configure" data-en="Configure">Yapılandırma</a> <a href="#verify" data-en="Verify">Doğrulama</a> <a href="#tools" data-en="Tool reference">Tool referansı</a> <a href="#troubleshooting" data-en="Troubleshooting">Sorun giderme</a> </aside> <!-- Content --> <div class="docs-content"> <section class="doc" id="overview"> <span class="tag" data-en="Overview">Genel bakış</span> <h3 data-en="How it works">Nasıl çalışır</h3> <p data-en="PowerBuilder MCP runs as a local stdio server that bridges your PowerBuilder workspace to MCP-compatible AI clients like GitHub Copilot. No source code leaves your machine.">
+</p> <div class="docs-shell"> <aside class="side" id="docsSide"> <h4 data-en="Quick start">Hızlı başlangıç</h4> <a class="active" href="#overview" data-en="Overview">Genel bakış</a> <a href="#install" data-en="Install">Kurulum</a> <a href="#configure" data-en="Configure">Yapılandırma</a> <a href="#verify" data-en="Verify">Doğrulama</a> <h4 data-en="Advanced" style="margin-top:18px">Gelişmiş</h4> <a href="#sql-pattern" data-en="SQL integration">SQL entegrasyonu</a> <a href="#security" data-en="Security patterns">Güvenlik desenleri</a> <h4 data-en="Reference" style="margin-top:18px">Referans</h4> <a href="#tools" data-en="Tool reference">Tool referansı</a> <a href="#troubleshooting" data-en="Troubleshooting">Sorun giderme</a> </aside> <div class="docs-content"> <section class="doc" id="overview"> <span class="tag" data-en="Overview">Genel bakış</span> <h3 data-en="How it works">Nasıl çalışır</h3> <p data-en="PowerBuilder MCP runs as a local stdio server that bridges your PowerBuilder workspace to MCP-compatible AI clients like GitHub Copilot. No source code leaves your machine.">
 PowerBuilder MCP, PowerBuilder çalışma alanınızı GitHub Copilot gibi MCP uyumlu AI istemcilerine bağlayan yerel bir stdio sunucusu olarak çalışır. Hiçbir kaynak kodu makinenizi terk etmez.
-</p> <div class="callout" data-en="The server is configured via environment variables: <code>PB_WORKSPACE_DIR</code>, <code>PB_ORCA_PATH</code>, <code>PB_MCP_LICENSE</code>, <code>PB_MCP_LICENSE_API_URL</code>, and <code>PB_MCP_MACHINE_CODE</code>, with a PowerShell entrypoint in <code>run_mcp.ps1</code>.">
-Sunucu ortam değişkenleri ile yapılandırılır: <code>PB_WORKSPACE_DIR</code>,
-<code>PB_ORCA_PATH</code>, <code>PB_MCP_LICENSE</code>,
-<code>PB_MCP_LICENSE_API_URL</code> ve <code>PB_MCP_MACHINE_CODE</code>,
-<code>run_mcp.ps1</code> içinde bir PowerShell giriş noktasıyla.
+</p> <div class="callout"> <span data-en="The server is configured via environment variables and a PowerShell entrypoint.">
+Sunucu ortam değişkenleri ve bir PowerShell giriş noktası ile yapılandırılır.
+</span> <code>PB_WORKSPACE_DIR</code>,
+<code>PB_ORCA_PATH</code>, <code>PB_MCP_LICENSE</code> — <code>run_mcp.ps1</code>.
 </div> </section> <section class="doc" id="install"> <span class="tag" data-en="Step 1">Adım 1</span> <h3 data-en="Install prerequisites">Önkoşulları kurun</h3> <ul> <li data-en="Windows environment compatible with your PowerBuilder runtime">PowerBuilder runtime'ınız ile uyumlu Windows ortamı</li> <li data-en="GitHub Copilot in VS Code or another MCP-capable client">VS Code'da GitHub Copilot veya başka bir MCP uyumlu istemci</li> <li data-en="PowerBuilder workspace available locally">Yerel olarak kullanılabilir PowerBuilder çalışma alanı</li> <li data-en="PowerBuilder MCP binary / release package">PowerBuilder MCP binary / release paketi</li> </ul> <div class="codebox"> <div class="codebox-head"><span>PowerShell</span><span>run_mcp.ps1</span></div> <pre>$WorkspaceDir = "C:\projects\sales_app"
 $OrcaPath     = "C:\path\to\native\runtime"
 $LicenseKey   = "PBMCP-XXXX-XXXX-XXXX"
 
-powershell -ExecutionPolicy Bypass -File .\run_mcp.ps1 `
-  -WorkspaceDir $WorkspaceDir `
-  -OrcaPath $OrcaPath `
+powershell -ExecutionPolicy Bypass -File .\run_mcp.ps1 ^
+  -WorkspaceDir $WorkspaceDir ^
+  -OrcaPath $OrcaPath ^
   -LicenseKey $LicenseKey</pre> </div> </section> <section class="doc" id="configure"> <span class="tag" data-en="Step 2">Adım 2</span> <h3 data-en="Configure Copilot MCP">Copilot MCP'yi yapılandırın</h3> <p data-en="Register PowerBuilder MCP as a local stdio server in your Copilot settings.">
 PowerBuilder MCP'yi Copilot ayarlarınızda yerel bir stdio sunucusu olarak kaydedin.
 </p> <div class="codebox"> <div class="codebox-head"><span>settings.json</span><span>VS Code → Copilot</span></div> <pre>{
@@ -70,11 +69,11 @@ PowerBuilder MCP'yi Copilot ayarlarınızda yerel bir stdio sunucusu olarak kayd
       "command": "powershell",
       "args": [
         "-ExecutionPolicy", "Bypass",
-        "-File", "C:\\PowerBuilderMCP\\run_mcp.ps1"
+        "-File", "C:\PowerBuilderMCP\run_mcp.ps1"
       ],
       "env": {
-        "PB_WORKSPACE_DIR": "C:\\projects\\sales_app",
-        "PB_ORCA_PATH": "C:\\path\\to\\native\\runtime",
+        "PB_WORKSPACE_DIR": "C:\projects\sales_app",
+        "PB_ORCA_PATH": "C:\path\to\native\runtime",
         "PB_MCP_LICENSE": "PBMCP-XXXX-XXXX-XXXX"
       }
     }
@@ -84,8 +83,69 @@ MCP sunucusunun doğru başlatıldığını doğrulamak için bir smoke test ça
 </p> <div class="codebox"> <div class="codebox-head"><span>PowerShell</span><span>smoke test</span></div> <pre>powershell -ExecutionPolicy Bypass -File .\run_mcp.ps1 -SmokeTest
 
 # expected outcome:
-# initialize request succeeds and the MCP server responds</pre> </div> <p data-en="Then open Copilot Chat and ask a low-risk discovery question like &quot;list libraries in this workspace&quot; before trying heavier analysis prompts.">
-Ardından Copilot Chat'i açın ve daha ağır analiz promptlarını denemeden önce "bu çalışma alanındaki kütüphaneleri listele" gibi düşük riskli bir keşif sorusu sorun.
-</p> </section> <section class="doc" id="tools"> <span class="tag" data-en="Reference">Referans</span> <h3 data-en="Tool reference">Tool referansı</h3> <ul> <li><code>list_libraries</code> — <span data-en="Enumerate available PBL libraries in the workspace">Çalışma alanındaki PBL kütüphanelerini listele</span></li><li><code>list_objects</code> — <span data-en="Inspect objects in a specific library">Belirli bir kütüphanedeki nesneleri incele</span></li><li><code>export_object</code> — <span data-en="Export an object into analyzable source format">Bir nesneyi analiz edilebilir kaynak formatına dışa aktar</span></li><li><code>import_object</code> — <span data-en="Compile or import source back into a library">Kaynağı kütüphaneye geri derle/import et</span></li><li><code>search_objects</code> — <span data-en="Search by pattern and optional object type">Pattern ve opsiyonel nesne tipine göre ara</span></li><li><code>parse_datawindow</code> — <span data-en="Extract SQL, tables, and columns from exported DataWindows">Dışa aktarılan DataWindow&#39;lardan SQL, tablo ve kolonları çıkar</span></li><li><code>analyze_dependencies</code> — <span data-en="Identify object and function references">Nesne ve function referanslarını belirle</span></li><li><code>find_nested_datawindows</code> — <span data-en="Locate nested DataWindow usage">İç içe DataWindow kullanımını bul</span></li> </ul> </section> <section class="doc" id="troubleshooting"> <span class="tag" data-en="Support">Destek</span> <h3 data-en="Troubleshooting">Sorun giderme</h3> <ul> <li data-en="The PowerBuilder runtime path must be valid on the local machine.">PowerBuilder runtime yolu yerel makinede geçerli olmalıdır.</li> <li data-en="Check process architecture compatibility (32-bit vs 64-bit).">İşlemci mimarisi uyumluluğunu kontrol edin (32-bit vs 64-bit).</li> <li data-en="Verify your license key is valid and not expired.">Lisans anahtarınızın geçerli ve süresi dolmamış olduğunu doğrulayın.</li> <li data-en="Ensure <code>PB_WORKSPACE_DIR</code> points to a valid <code>.pbw</code> file."><code>PB_WORKSPACE_DIR</code>'in geçerli bir <code>.pbw</code> dosyasına işaret ettiğinden emin olun.</li> </ul> <div class="callout" data-en="For enterprise support: trial activation, license validation, on-prem rollout, and secure workstation setup — contact your account team.">
+# initialize request succeeds and the MCP server responds</pre> </div> <p data-en="Then open Copilot Chat and ask a low-risk discovery question before trying heavier analysis prompts.">
+Ardından Copilot Chat'i açın ve daha ağır analiz promptlarını denemeden önce düşük riskli bir keşif sorusu sorun.
+</p> </section> <section class="doc" id="sql-pattern"> <span class="tag" data-en="Advanced">Gelişmiş</span> <h3 data-en="PowerBuilder MCP + SQL Server together">PowerBuilder MCP + SQL Server birlikte</h3> <p data-en="PowerBuilder applications are database-first. DataWindows embed SQL, business rules live in stored procedures, and understanding the schema makes every Copilot suggestion dramatically better. The trick: run a second MCP server for SQL alongside PowerBuilder MCP, so Copilot sees both your application objects and the database they talk to.">
+PowerBuilder uygulamaları database-first'tir. DataWindow'lar SQL gömer, iş kuralları stored procedure'larda yaşar ve şemayı anlamak her Copilot önerisini ciddi şekilde iyileştirir. İpucu: PowerBuilder MCP'nin yanında SQL için ikinci bir MCP sunucusu çalıştırın, böylece Copilot hem uygulama nesnelerinizi hem de konuştukları veritabanını görür.
+</p> <div class="codebox"> <div class="codebox-head"><span>settings.json</span><span data-en="Two MCP servers">İki MCP sunucusu</span></div> <pre>{
+  "github.copilot.chat.mcp.servers": {
+    "powerbuilder": {
+      "command": "powershell",
+      "args": ["-ExecutionPolicy", "Bypass", "-File", "C:\PowerBuilderMCP\run_mcp.ps1"],
+      "env": {
+        "PB_WORKSPACE_DIR": "C:\projects\sales_app",
+        "PB_ORCA_PATH": "C:\path\to\native\runtime",
+        "PB_MCP_LICENSE": "PBMCP-XXXX-XXXX-XXXX"
+      }
+    },
+    "mssql": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-mssql"],
+      "env": {
+        "MSSQL_HOST": "localhost",
+        "MSSQL_PORT": "1433",
+        "MSSQL_DATABASE": "sales_app_dev",
+        "MSSQL_USER": "pbmcp_reader",
+        "MSSQL_PASSWORD": "*****"
+      }
+    }
+  }
+}</pre> </div> <div class="callout" style="border-left:3px solid var(--blue); margin-top:16px"> <strong data-en="Why this works:">Neden işe yarıyor:</strong> <span data-en="Copilot can now cross-reference a DataWindow embedded SQL against the actual table schema. When you ask which columns do not exist in the orders table, it can actually check instead of guessing.">
+Copilot artık bir DataWindow'un gömülü SQL'ini gerçek tablo şemasıyla çapraz referanslayabilir. Hangi kolonlar tabloda yok diye sorduğunuzda tahmin etmek yerine gerçekten kontrol edebilir.
+</span> </div> </section> <section class="doc" id="security"> <span class="tag" data-en="Critical" style="background:#3a1518;color:#ff6b6b">Kritik</span> <h3 data-en="Security patterns for SQL access">SQL erişimi için güvenlik desenleri</h3> <p data-en="Giving AI assistants database access is a privilege, not a right. Every enterprise will — and should — question it. Here is how to do it safely:">
+AI asistanlarına veritabanı erişimi vermek bir hak değil, bir ayrıcalıktır. Her kurum bunu sorgulayacaktır ve sorgulamalıdır. İşte güvenli şekilde yapmanın yolu:
+</p> <div class="grid2" style="margin: 20px 0"> <div class="panel" style="padding:18px"> <h4 style="color:var(--green);font-size:15px;margin:0 0 8px" data-en="Do">Yapın</h4> <ul class="list" style="font-size:13px"> <li><span class="check">✓</span><span data-en="Read-only user: db_datareader only, explicit DENY on writes">Read-only kullanici: sadece db_datareader, yazma islemlerine acik DENY</span></li><li><span class="check">✓</span><span data-en="Dev database only: Never connect Copilot to production">Sadece dev veritabani: Asla Copilotu productiona baglama</span></li><li><span class="check">✓</span><span data-en="Separate MCP: SQL runs in its own process, not inside PowerBuilder MCP">Ayri MCP: SQL kendi surecinde calisir, PowerBuilder MCP icinde degil</span></li><li><span class="check">✓</span><span data-en="Schema-first: Let Copilot discover tables/columns before data">Sema onceligi: Veriden once tablo/kolon kesfi</span></li><li><span class="check">✓</span><span data-en="Audit trail: Log all queries via SQL Server Profiler or Extended Events">Denetim izi: Profiler veya Extended Events ile tum sorgulari logla</span></li> </ul> </div> <div class="panel" style="padding:18px;border-color:rgba(255,107,107,.2)"> <h4 style="color:#ff6b6b;font-size:15px;margin:0 0 8px" data-en="Avoid">Yapmayın</h4> <ul class="list" style="font-size:13px"> <li><span class="check" style="color:#ff6b6b">✗</span><span data-en="Do not use sa or admin credentials">sa veya admin credentials kullanma</span></li><li><span class="check" style="color:#ff6b6b">✗</span><span data-en="Do not connect to production databases">Production veritabanlarina baglanma</span></li><li><span class="check" style="color:#ff6b6b">✗</span><span data-en="Do not grant db_owner or write roles">db_owner veya yazma rolleri verme</span></li><li><span class="check" style="color:#ff6b6b">✗</span><span data-en="Do not embed SQL execution inside PowerBuilder MCP itself">SQL calistirmayi PowerBuilder MCPnin icine gomme</span></li><li><span class="check" style="color:#ff6b6b">✗</span><span data-en="Do not store credentials in plaintext in shared repos">Credentialsi paylasilan repolarda plaintext saklama</span></li> </ul> </div> </div> <div class="codebox"> <div class="codebox-head"><span data-en="SQL — read-only user setup">SQL — read-only kullanıcı oluşturma</span><span>T-SQL</span></div> <pre>-- Create a read-only user for AI-assisted analysis
+-- Run this on your DEVELOPMENT database, never production
+
+CREATE LOGIN pbmcp_reader WITH PASSWORD = 'StrongPass!2025';
+
+USE sales_app_dev;
+
+CREATE USER pbmcp_reader FOR LOGIN pbmcp_reader;
+
+-- Read-only: can SELECT, can see schema, cannot write
+ALTER ROLE db_datareader ADD MEMBER pbmcp_reader;
+
+-- Explicitly DENY write operations
+DENY INSERT, UPDATE, DELETE, ALTER, DROP TO pbmcp_reader;
+
+-- Verify
+SELECT permission_name, state_desc
+FROM sys.database_permissions
+WHERE grantee_principal_id = USER_ID('pbmcp_reader');</pre> </div> <div class="callout" style="margin-top:16px"> <strong data-en="sqlcmd alternative:">sqlcmd alternatifi:</strong> <span data-en="If your environment does not allow MCP SQL servers, export the schema via sqlcmd, save it as a .sql file in your workspace, and let Copilot read it as context. Less interactive, but zero network exposure.">
+Ortamınız MCP SQL sunucularına izin vermiyorsa, şemayı sqlcmd ile dışa aktarın, çalışma alanınızda bir .sql dosyası olarak kaydedin ve Copilot'un bunu bağlam olarak okumasına izin verin.
+</span> </div> <div class="codebox"> <div class="codebox-head"><span data-en="Schema discovery via sqlcmd">sqlcmd ile şema keşfi</span><span>developer workstation</span></div> <pre>-- sqlcmd: run from developer workstation
+-- Useful when MCP SQL server is not available
+
+sqlcmd -S localhost -d sales_app_dev -U pbmcp_reader -P "*****" -Q "
+  SELECT t.name AS table_name,
+         c.name AS column_name,
+         ty.name AS data_type
+  FROM sys.tables t
+  JOIN sys.columns c ON t.object_id = c.object_id
+  JOIN sys.types ty ON c.user_type_id = ty.user_type_id
+  WHERE t.name LIKE 'order%'
+  ORDER BY t.name, c.column_id
+"</pre> </div> </section> <section class="doc" id="tools"> <span class="tag" data-en="Reference">Referans</span> <h3 data-en="Tool reference">Tool referansı</h3> <ul> <li><code>list_libraries</code> — <span data-en="Enumerate available PBL libraries in the workspace">Calisma alanindaki PBL kutuphanelerini listele</span></li><li><code>list_objects</code> — <span data-en="Inspect objects in a specific library">Belirli bir kutuphanedeki nesneleri incele</span></li><li><code>export_object</code> — <span data-en="Export an object into analyzable source format">Bir nesneyi analiz edilebilir kaynak formatina disa aktar</span></li><li><code>import_object</code> — <span data-en="Compile or import source back into a library">Kaynagi kutuphaneye geri derle/import et</span></li><li><code>search_objects</code> — <span data-en="Search by pattern and optional object type">Pattern ve opsiyonel nesne tipine gore ara</span></li><li><code>parse_datawindow</code> — <span data-en="Extract SQL, tables, and columns from exported DataWindows">Disa aktarilan DataWindowlardan SQL, tablo ve kolonlari cikar</span></li><li><code>analyze_dependencies</code> — <span data-en="Identify object and function references">Nesne ve function referanslarini belirle</span></li><li><code>find_nested_datawindows</code> — <span data-en="Locate nested DataWindow usage">Ic ice DataWindow kullanimini bul</span></li> </ul> </section> <section class="doc" id="troubleshooting"> <span class="tag" data-en="Support">Destek</span> <h3 data-en="Troubleshooting">Sorun giderme</h3> <ul> <li data-en="The PowerBuilder runtime path must be valid on the local machine.">PowerBuilder runtime yolu yerel makinede geçerli olmalıdır.</li> <li data-en="Check process architecture compatibility (32-bit vs 64-bit).">İşlemci mimarisi uyumluluğunu kontrol edin (32-bit vs 64-bit).</li> <li data-en="Verify your license key is valid and not expired.">Lisans anahtarınızın geçerli ve süresi dolmamış olduğunu doğrulayın.</li> <li data-en="Ensure PB_WORKSPACE_DIR points to a valid .pbw file.">PB_WORKSPACE_DIR'in geçerli bir .pbw dosyasına işaret ettiğinden emin olun.</li> </ul> <div class="callout" data-en="For enterprise support: trial activation, license validation, on-prem rollout, and secure workstation setup — contact your account team.">
 Kurumsal destek için: deneme aktivasyonu, lisans doğrulama, on-prem dağıtım ve güvenli iş istasyonu kurulumu — hesap ekibinizle iletişime geçin.
 </div> </section> </div> </div> </div> </main>  <footer class="footer"> <div class="container"> <p>© 2026 PowerBuilder MCP — <span data-en="AI workflows for PowerBuilder teams">PowerBuilder ekipleri için AI iş akışları</span>.</p> <p><a href="/docs" data-en="Docs">Dokümanlar</a> · <a href="/prompts" data-en="Prompt library">Prompt kütüphanesi</a></p> </div> </footer> </body></html>

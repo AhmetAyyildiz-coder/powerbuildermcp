@@ -36,6 +36,12 @@ const prompts = [
     enDesc: 'Find objects nobody references.',
     code: `List all user objects in shared.pbl. For each one, search the entire workspace to see if any other object references it. Report any that have zero references.`,
   },
+  {
+    trTitle: 'DataWindow ↔ Tablo şema doğrulama', enTitle: 'DataWindow ↔ table schema validation',
+    trDesc: 'DataWindow SQL\'i ile gerçek veritabanı şemasını çapraz kontrol edin. (PowerBuilder MCP + SQL MCP birlikte)',
+    enDesc: 'Cross-check DataWindow SQL against the actual database schema. (PowerBuilder MCP + SQL MCP together)',
+    code: `Export d_order_entry and extract its SQL, tables, and columns. Then query the database schema for the orders table. Compare the two and tell me: which columns exist in the DataWindow but not in the table, and which columns exist in the table but aren't used by the DataWindow?`,
+  },
 ];
 
 const schema = {
