@@ -42,6 +42,18 @@ const prompts = [
     enDesc: 'Cross-check DataWindow SQL against the actual database schema. (PowerBuilder MCP + SQL MCP together)',
     code: `Export d_order_entry and extract its SQL, tables, and columns. Then query the database schema for the orders table. Compare the two and tell me: which columns exist in the DataWindow but not in the table, and which columns exist in the table but aren't used by the DataWindow?`,
   },
+  {
+    trTitle: 'Dynamic SQL izleme', enTitle: 'Dynamic SQL tracing',
+    trDesc: 'Runtime\'da kurulan SQL string\'lerini trace ederek hangi tablolara erişildiğini bulun.',
+    enDesc: 'Trace SQL strings built at runtime to discover which tables are actually accessed.',
+    code: `Export w_customer_search. It builds its query dynamically based on user filters. Read every line where ls_sql is assigned or concatenated. List every possible table and column that can end up in the final SQL, grouped by which filter condition triggers them. Flag any branches that reference tables which no longer exist in the database.`,
+  },
+  {
+    trTitle: 'EXECUTE IMMEDIATE denetimi', enTitle: 'EXECUTE IMMEDIATE audit',
+    trDesc: 'Tüm EXECUTE IMMEDIATE ve PREPARE/EXECUTE bloklarını bulun ve içeriğini çözün.',
+    enDesc: 'Find all EXECUTE IMMEDIATE and PREPARE/EXECUTE blocks and resolve their contents.',
+    code: `Search the entire workspace for EXECUTE IMMEDIATE and PREPARE statements. For each one, trace backwards to find where the SQL string was constructed. Report: object name, line range, the full reconstructed SQL if possible, and the target tables. Rank them by complexity — which ones have the most conditional branches.`,
+  },
 ];
 
 const schema = {

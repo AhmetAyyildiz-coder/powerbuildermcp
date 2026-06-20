@@ -36,6 +36,9 @@ const faqs = [
   { trq: 'Migrasyon planlama için uygun mu?', enq: 'Is it suitable for migration planning?',
     tra: 'Kesinlikle. Yoğun kullanılan iş kurallarını, sıkı bağlı UI mantığını, karmaşık DataWindow\'ları ve service extraction adaylarını belirlemeye yardımcı olur — aşamalı modernizasyon için güçlü bir temel.',
     ena: 'Absolutely. It helps identify heavily reused business rules, tightly coupled UI logic, complex DataWindows, and service extraction candidates — a strong foundation for phased modernization.' },
+  { trq: "Dynamic SQL'i çözebilir mi?", enq: 'Can it handle dynamic SQL?',
+    tra: "Evet, bu en kritik yeteneğidir. PowerBuilder'da dynamic SQL — runtime'da kurulan string'ler, EXECUTE IMMEDIATE, koşullu WHERE clause'ları — grep ile bulunamaz. PowerBuilder MCP nesneleri dışa aktarır ve Copilot concatenation logic'ini izleyerek hangi tablo ve kolonların gerçekten referans alındığını çıkarır.",
+    ena: 'Yes, this is its most critical capability. Dynamic SQL in PowerBuilder — strings built at runtime, EXECUTE IMMEDIATE, conditional WHERE clauses — cannot be found with grep. PowerBuilder MCP exports objects and Copilot traces concatenation logic to extract which tables and columns are actually referenced.' },
   { trq: 'Hangi PowerBuilder sürümleri destekleniyor?', enq: 'What PowerBuilder versions are supported?',
     tra: 'PowerBuilder 12.5, native PowerBuilder runtime interface üzerinden şu anda desteklenmektedir. Ek sürümler yol haritasındadır.',
     ena: 'PowerBuilder 12.5 is currently supported through the native PowerBuilder runtime interface. Additional versions are on the roadmap.' },
@@ -57,6 +60,7 @@ const softwareSchema = {
     'Dependency mapping',
     'Cross-library search',
     'Nested DataWindow detection',
+    'Dynamic SQL tracing and EXECUTE IMMEDIATE analysis',
   ],
 };
 
@@ -187,34 +191,44 @@ import VSCodeMockup from '../components/VSCodeMockup.astro';
       </div>
     </section>
 
-    <!-- POSITIONING / NEXT STEPS -->
-    <section class="section">
-      <div class="container two">
-        <div class="panel">
-          <div class="kicker" data-en="Positioning">Konumlandırma</div>
-          <h3 data-en="Product site first, resource site second">Önce ürün sitesi, sonra kaynak sitesi</h3>
-          <p data-en="Lead with a serious product posture, then attach educational content underneath it.">
-            Ciddi bir ürün duruşuyla başlayın, ardından eğitim içeriğini altına ekleyin.
-          </p>
-          <ul class="list">
-            <li><span class="check">✓</span><span data-en="<strong>Homepage:</strong> clear problem, realistic UI, enterprise trust."><strong>Ana sayfa:</strong> net problem, gerçekçi UI, kurumsal güven.</span></li>
-            <li><span class="check">✓</span><span data-en="<strong>Docs:</strong> install, configure, verify, troubleshooting."><strong>Dokümanlar:</strong> kurulum, yapılandırma, doğrulama, sorun giderme.</span></li>
-            <li><span class="check">✓</span><span data-en="<strong>Prompt library:</strong> example prompts by use-case."><strong>Prompt kütüphanesi:</strong> kullanım senaryosuna göre örnek promptlar.</span></li>
-            <li><span class="check">✓</span><span data-en="<strong>Later:</strong> case studies, blog, pricing, licensing."><strong>Sonra:</strong> vaka çalışmaları, blog, fiyatlandırma, lisanslama.</span></li>
-          </ul>
-        </div>
-        <div class="panel">
-          <div class="kicker" data-en="Next steps">Sonraki adımlar</div>
-          <h3 data-en="What to build after launch">Lansmandan sonra ne kurulmalı</h3>
-          <div class="callout" style="margin-bottom:16px" data-en="<strong>Production checklist</strong><br>• Custom domain (powerbuildermcp.com)<br>• Real demo video using actual workspace<br>• Download portal with license activation<br>• Compatibility matrix (PB versions, Windows)">
-            <strong>Production checklist</strong><br>
-            • Özel domain (powerbuildermcp.com)<br>
-            • Gerçek çalışma alanı ile demo video<br>
-            • Lisans aktivasyonlu indirme portalı<br>
-            • Uyumluluk matrisi (PB sürümleri, Windows)
+    <!-- DYNAMIC SQL -->
+    <section class="section" id="dynamic-sql">
+      <div class="container">
+        <div class="kicker" data-en="The PowerBuilder problem">PowerBuilder problemi</div>
+        <h2 data-en="Dynamic SQL: the part everyone is afraid to touch">
+          Dynamic SQL: kimsenin dokunmaya korktuğu yer
+        </h2>
+        <p class="top" data-en="PowerBuilder legacy code is full of dynamic SQL — strings assembled at runtime with concatenation, EXECUTE IMMEDIATE, dynamic cursors, and conditional WHERE clauses. You can't grep it. You can't trace it. Migration teams spend months mapping it by hand. PowerBuilder MCP changes that.">
+          PowerBuilder legacy kodu dynamic SQL ile doludur — runtime'da concatenation ile kurulan string'ler, EXECUTE IMMEDIATE, dynamic cursor'lar ve koşullu WHERE clause'ları. Grep yapamazsınız. İzleyemezsiniz. Migration ekipleri bunu elle haritalamakla aylar harcer. PowerBuilder MCP bunu değiştirir.
+        </p>
+        <div class="grid3">
+          <div class="panel">
+            <h3 data-en="Discover">Keşfet</h3>
+            <p data-en="Export every window, function, and user object. Copilot scans for dynamic SQL patterns: string concatenation, EXECUTE IMMEDIATE, PREPARE/EXECUTE, Format 3 and 4 cursors.">
+              Tüm pencereleri, function'ları ve user object'leri dışa aktar. Copilot dynamic SQL pattern'lerini tarar: string concatenation, EXECUTE IMMEDIATE, PREPARE/EXECUTE, Format 3 ve 4 cursor'lar.
+            </p>
           </div>
-          <a class="btn" href="/docs" data-en="Open docs">Dokümanları aç</a> &nbsp;
-          <a class="btn-ghost" href="/prompts" data-en="Prompt library">Prompt kütüphanesi</a>
+          <div class="panel">
+            <h3 data-en="Trace">İzle</h3>
+            <p data-en="Follow the variable assignments. When ls_sql gets built across 40 lines of conditionals, Copilot reconstructs the logic and identifies which tables and columns are actually referenced.">
+              Değişken atamalarını takip et. ls_sql 40 satırlık koşullu mantıkla kurulduğunda, Copilot logic'i yeniden yapılandırır ve hangi tablo ve kolonların gerçekten referans alındığını belirler.
+            </p>
+          </div>
+          <div class="panel">
+            <h3 data-en="Resolve">Çöz</h3>
+            <p data-en="Cross-reference discovered SQL against the database schema. Get a definitive list: which tables each dynamic SQL block can hit, which columns it reads, and which branches are dead code.">
+              Keşfedilen SQL'i veritabanı şemasıyla çapraz referansla. Kesin liste alın: her dynamic SQL bloğu hangi tablolara erişebilir, hangi kolonları okur ve hangi dallar ölü koddur.
+            </p>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:24px;border-left:3px solid var(--blue)">
+          <strong data-en="Real scenario:">Gerçek senaryo:</strong>
+          <span data-en="A DataWindow's SQL is built dynamically based on 12 different filter conditions. Nobody remembers all the branches. Copilot exports the object, traces every concatenation path, and maps every possible table and column — in seconds, not weeks.">
+            Bir DataWindow'un SQL'i 12 farklı filtre koşuluna göre dinamik olarak kuruluyor. Kimse tüm dalları hatırlamıyor. Copilot nesneyi dışa aktarır, her concatenation yolunu izler ve her olası tablo ve kolonu haritalar — haftalar değil, saniyeler içinde.
+          </span>
+        </div>
+        <div style="margin-top:24px">
+          <a class="btn" href="/prompts" data-en="Try dynamic SQL prompts">Dynamic SQL promptlarını dene</a>
         </div>
       </div>
     </section>
