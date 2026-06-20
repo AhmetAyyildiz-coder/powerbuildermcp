@@ -8,6 +8,7 @@ const tools = [
   { name: 'parse_datawindow', trDesc: 'Disa aktarilan DataWindowlardan SQL, tablo ve kolonlari cikar', enDesc: 'Extract SQL, tables, and columns from exported DataWindows' },
   { name: 'analyze_dependencies', trDesc: 'Nesne ve function referanslarini belirle', enDesc: 'Identify object and function references' },
   { name: 'find_nested_datawindows', trDesc: 'Ic ice DataWindow kullanimini bul', enDesc: 'Locate nested DataWindow usage' },
+  { name: 'analyze_dynamic_sql', trDesc: 'EXECUTE IMMEDIATE, PREPARE/EXECUTE ve dynamic cursorlari tespit et; SQL degisken atamalarini izleyerek tablo ve kolonlari cikar', enDesc: 'Detect EXECUTE IMMEDIATE, PREPARE/EXECUTE and dynamic cursors; trace SQL variable assignments to extract tables and columns' },
 ];
 
 const codeBlocks = {
