@@ -143,6 +143,11 @@ a { text-decoration: none; color: inherit; }
   gap: 46px;
   align-items: center;
 }
+.btn-primary-lg {
+  padding: 16px 36px !important;
+  font-size: 16px !important;
+  border-radius: 12px !important;
+}
 .eyebrow {
   display: inline-flex;
   gap: 8px;
